@@ -25,8 +25,8 @@ function drawHex(x, y, r, text=null, color="white", symbol=null) {
 
     ctx.fillStyle = "black";
     if (symbol) {
-        ctx.font = '24px sans';
-        ctx.fillText(symbol, x - ctx.measureText(symbol).width / 2, y);
+        ctx.font = '10px sans';
+        ctx.fillText(symbol, x + ctx.measureText(symbol).width, y);
     }
 }
 
