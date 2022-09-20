@@ -34,6 +34,7 @@ function drawHexGrid(width, height, radius) {
     let y = radius;
     let x = radius;
     let r = radius;
+    let prev_hex = 0;
     for (let i = 0; i < height; i++) {
         let flag = 1;
         let innerX = x;
@@ -42,6 +43,11 @@ function drawHexGrid(width, height, radius) {
         for(let j = 0; j < width; j++){
             let secondIndex = j.toLocaleString('ru', {minimumIntegerDigits:2});
             const hex = calcHex(hexGrid, firstIndex, secondIndex);
+            const symbol = hexes[hex]['symbol'];
+            let color = 'color' in hexes[hex] ? hexes[hex]['color'] : "white";
+            if (hex == 9) {
+                color = 'color' in hexes[prev_hex] ? hexes[prev_hex]['color'] : "white";
+            }
             hexGrid[firstIndex][secondIndex] = hex;
             drawHex(
                 innerX, 
@@ -49,12 +55,13 @@ function drawHexGrid(width, height, radius) {
                 r, 
                 i.toLocaleString('ru', {minimumIntegerDigits:2}) +
                 j.toLocaleString('ru', {minimumIntegerDigits:2}), 
-                'color' in hexes[hex] ? hexes[hex]['color'] : "white",
-                hexes[hex]['symbol']
+                color,
+                symbol
             );
             innerX = innerX + r + r * Math.cos(a);
             innerY = innerY + flag * r * Math.sin(a);
-            flag = -flag;       
+            flag = -flag;
+            prev_hex = hex;      
         }
         y += 2 * radius * Math.sin(a);
     }
