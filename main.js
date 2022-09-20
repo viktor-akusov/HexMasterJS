@@ -1,10 +1,12 @@
+import {hexes, calcHex, createHexGrid} from './hexes.js';
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 const a = 2 * Math.PI / 6;
-const hexGrid = {};
+const hexGrid = createHexGrid(21, 14);
 
-function drawHex(x, y, r, text=null, color="white") {
+function drawHex(x, y, r, text=null, color="white", symbol=null) {
     
     ctx.beginPath();
     for (var i = 0; i < 6; i++) {
@@ -20,6 +22,12 @@ function drawHex(x, y, r, text=null, color="white") {
         ctx.font = '10px sans';
         ctx.fillText(text, x - ctx.measureText(text).width / 2, y + r / 1.5);
     }
+
+    ctx.fillStyle = "black";
+    if (symbol) {
+        ctx.font = '24px sans';
+        ctx.fillText(symbol, x - ctx.measureText(symbol).width / 2, y);
+    }
 }
 
 function drawHexGrid(width, height, radius) {
@@ -30,18 +38,20 @@ function drawHexGrid(width, height, radius) {
         let flag = 1;
         let innerX = x;
         let innerY = y;
-        firstIndex = i.toLocaleString('ru', {minimumIntegerDigits:2});
-        hexGrid[firstIndex] = {}
+        let firstIndex = i.toLocaleString('ru', {minimumIntegerDigits:2});
         for(let j = 0; j < width; j++){
-            secondIndex = j.toLocaleString('ru', {minimumIntegerDigits:2});
+            let secondIndex = j.toLocaleString('ru', {minimumIntegerDigits:2});
+            const hex = calcHex(hexGrid, firstIndex, secondIndex);
+            hexGrid[firstIndex][secondIndex] = hex;
             drawHex(
                 innerX, 
                 innerY, 
                 r, 
                 i.toLocaleString('ru', {minimumIntegerDigits:2}) +
-                j.toLocaleString('ru', {minimumIntegerDigits:2})
+                j.toLocaleString('ru', {minimumIntegerDigits:2}), 
+                'color' in hexes[hex] ? hexes[hex]['color'] : "white",
+                hexes[hex]['symbol']
             );
-            hexGrid[firstIndex][secondIndex] = 0;
             innerX = innerX + r + r * Math.cos(a);
             innerY = innerY + flag * r * Math.sin(a);
             flag = -flag;       
