@@ -1,55 +1,55 @@
 const hexes = {
     0: {
         name: "Plains",
-        symbol: "P",
+        symbol: null,
         color: "#b2f50a",
         tiles: [11, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     },
     1: {
         name: "Scrub",
-        symbol: "S",
+        symbol: null,
         color: "#76a303",
         tiles: [3, 8, 2, 1, 1, 1, 1, 1, 1, 1]
     },
     2: {
         name: "Forest",
-        symbol: "F",
+        symbol: null,
         color: "#026126",
         tiles: [1, 3, 10, 1, 0, 1, 1, 1, 1, 1]
     },
     3: {
         name: "Roughs",
-        symbol: "R",
+        symbol: null,
         color: "#555555",
         tiles: [2, 2, 1, 3, 2, 5, 2, 1, 1, 1]
     },
     4: {
         name: "Desert",
-        symbol: "D",
+        symbol: null,
         color: "#f7ed5c",
         tiles: [3, 2, 0, 3, 6, 1, 2, 1, 1, 1]
     },
     5: {
         name: "Hills",
-        symbol: "H",
+        symbol: null,
         color: "#00ff00",
         tiles: [1, 2, 2, 2, 1, 6, 2, 1, 2, 1]
     },
     6: {
         name: "Mountains",
-        symbol: "M",
+        symbol: null,
         color: "#ffffff",
         tiles: [1, 1, 1, 2, 1, 4, 8, 0, 1, 1]
     },
     7: {
         name: "Marsh",
-        symbol: "Mr",
+        symbol: null,
         color: "#910088",
         tiles: [2, 2, 2, 1, 0, 1, 0, 7, 4, 1]
     },
     8: {
         name: "Pond",
-        symbol: "Pn",
+        symbol: null,
         color: "#5555ff",
         tiles: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     },

@@ -1,4 +1,5 @@
 import {hexes, calcHex, createHexGrid} from './hexes.js';
+import { getSettlement } from './inhabitance.js';
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -6,7 +7,7 @@ const ctx = canvas.getContext('2d');
 const a = 2 * Math.PI / 6;
 const hexGrid = createHexGrid(21, 14);
 
-function drawHex(x, y, r, text=null, color="white", symbol=null) {
+function drawHex(x, y, r, text=null, color="white", symbol=null, inhabitance=null) {
     
     ctx.beginPath();
     for (var i = 0; i < 6; i++) {
@@ -26,7 +27,13 @@ function drawHex(x, y, r, text=null, color="white", symbol=null) {
     ctx.fillStyle = "black";
     if (symbol) {
         ctx.font = '10px sans';
-        ctx.fillText(symbol, x + r * 1 - ctx.measureText(text).width, y);
+        ctx.fillText(symbol, x + r - ctx.measureText(symbol).width * 2.2, y + r / 2.6);
+    }
+
+    ctx.fillStyle = "black";
+    if (inhabitance) {
+        ctx.font = '20px sans';
+        ctx.fillText(inhabitance, x - ctx.measureText(inhabitance).width / 2, y);
     }
 }
 
@@ -49,6 +56,7 @@ function drawHexGrid(width, height, radius) {
                 color = 'color' in hexes[prev_hex] ? hexes[prev_hex]['color'] : "white";
             }
             hexGrid[firstIndex][secondIndex] = hex;
+            let inhabitance = hex != 8 ? getSettlement() : null;
             drawHex(
                 innerX, 
                 innerY, 
@@ -56,7 +64,8 @@ function drawHexGrid(width, height, radius) {
                 i.toLocaleString('ru', {minimumIntegerDigits:2}) +
                 j.toLocaleString('ru', {minimumIntegerDigits:2}), 
                 color,
-                symbol
+                symbol,
+                inhabitance
             );
             innerX = innerX + r + r * Math.cos(a);
             innerY = innerY + flag * r * Math.sin(a);
