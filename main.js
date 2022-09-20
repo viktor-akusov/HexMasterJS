@@ -106,7 +106,7 @@ function init(height, width, radius) {
         }
         if (inhabitances[key]['description']) {
             ctx.font = '12px sans';
-            ctx.fillText('       ' + hexes[key]['description'], x_start + 2 * radius, y_start + radius / 2);
+            ctx.fillText('       ' + inhabitances[key]['description'], x_start + 2 * radius, y_start + radius / 2);
         }
         y_start += radius * 2;
     });
