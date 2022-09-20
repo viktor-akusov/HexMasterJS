@@ -1,61 +1,71 @@
 const hexes = {
     0: {
-        name: "Plains",
+        name: "Равнина",
         symbol: null,
         color: "#b2f50a",
+        description: 'Образец текста для описания',
         tiles: [11, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     },
     1: {
-        name: "Scrub",
+        name: "Заросли",
         symbol: null,
         color: "#76a303",
+        description: 'Образец текста для описания',
         tiles: [3, 8, 2, 1, 1, 1, 1, 1, 1, 1]
     },
     2: {
-        name: "Forest",
+        name: "Лес",
         symbol: null,
         color: "#026126",
+        description: 'Образец текста для описания',
         tiles: [1, 3, 10, 1, 0, 1, 1, 1, 1, 1]
     },
     3: {
-        name: "Roughs",
+        name: "Пересеченная местность",
         symbol: null,
         color: "#555555",
+        description: 'Образец текста для описания',
         tiles: [2, 2, 1, 3, 2, 5, 2, 1, 1, 1]
     },
     4: {
-        name: "Desert",
+        name: "Пустыня",
         symbol: null,
         color: "#f7ed5c",
+        description: 'Образец текста для описания',
         tiles: [3, 2, 0, 3, 6, 1, 2, 1, 1, 1]
     },
     5: {
-        name: "Hills",
+        name: "Холмы",
         symbol: null,
         color: "#00ff00",
+        description: 'Образец текста для описания',
         tiles: [1, 2, 2, 2, 1, 6, 2, 1, 2, 1]
     },
     6: {
-        name: "Mountains",
+        name: "Горы",
         symbol: null,
         color: "#ffffff",
+        description: 'Образец текста для описания',
         tiles: [1, 1, 1, 2, 1, 4, 8, 0, 1, 1]
     },
     7: {
-        name: "Marsh",
+        name: "Болота",
         symbol: null,
         color: "#910088",
+        description: 'Образец текста для описания',
         tiles: [2, 2, 2, 1, 0, 1, 0, 7, 4, 1]
     },
     8: {
-        name: "Pond",
+        name: "Вода",
         symbol: null,
         color: "#5555ff",
+        description: 'Образец текста для описания',
         tiles: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     },
     9: {
-        name: "Depression",
-        symbol: "Dp",
+        name: "Низина",
+        symbol: "Низ",
+        description: 'Образец текста для описания',
         tiles: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     },
 }

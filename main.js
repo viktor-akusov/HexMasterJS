@@ -76,8 +76,22 @@ function drawHexGrid(width, height, radius) {
     }
 }
 
-function init() {
-    drawHexGrid(21, 14, 30);
+function init(height, width, radius) {
+    drawHexGrid(height, width, radius);
+    let y_start = radius * height * 1.3;
+    Object.keys(hexes).forEach(key => {
+        drawHex(radius, y_start, radius, null, hexes[key]['color'], hexes[key]['symbol']);
+        ctx.fillStyle = "black";
+        if (hexes[key]['name']) {
+            ctx.font = '24px sans';
+            ctx.fillText(' - ' + hexes[key]['name'], 2.5 * radius, y_start);
+        }
+        if (hexes[key]['description']) {
+            ctx.font = '12px sans';
+            ctx.fillText('       ' + hexes[key]['description'], 2.5 * radius, y_start + radius / 2);
+        }
+        y_start += radius * 2;
+    });
 }
 
-init();
+init(21, 14, 35);
