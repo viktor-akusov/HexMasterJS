@@ -1,5 +1,5 @@
 import {hexes, calcHex, createHexGrid} from './hexes.js';
-import { getSettlement } from './inhabitance.js';
+import { getSettlement, inhabitances } from './inhabitance.js';
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -89,6 +89,24 @@ function init(height, width, radius) {
         if (hexes[key]['description']) {
             ctx.font = '12px sans';
             ctx.fillText('       ' + hexes[key]['description'], 2.5 * radius, y_start + radius / 2);
+        }
+        y_start += radius * 2;
+    });
+    y_start = radius * height * 1.3;
+    let x_start = 20 * radius;
+    Object.keys(inhabitances).forEach(key => {
+        ctx.fillStyle = "black";
+        if (inhabitances[key]['symbol']) {
+            ctx.font = '35px sans';
+            ctx.fillText(inhabitances[key]['symbol'], x_start, y_start);
+        }
+        if (inhabitances[key]['name']) {
+            ctx.font = '24px sans';
+            ctx.fillText(' - ' + inhabitances[key]['name'], x_start + 2 * radius, y_start);
+        }
+        if (inhabitances[key]['description']) {
+            ctx.font = '12px sans';
+            ctx.fillText('       ' + hexes[key]['description'], x_start + 2 * radius, y_start + radius / 2);
         }
         y_start += radius * 2;
     });
